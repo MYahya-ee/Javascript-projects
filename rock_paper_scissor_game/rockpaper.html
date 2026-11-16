@@ -2,38 +2,21 @@
 <html>
     <head>
         <title>game</title>
+        <link rel="stylesheet" href="rockpaper.css">
+        <script src="rockpaper.js" defer></script>
     </head>
     <body>
-        <style>
-            body{
-                color: aliceblue;
-                background-color: rgb(8, 8, 8);
-                font-family: Arial, Helvetica, sans-serif;
-            }
-            .signs{
-                height: 72px;
-                width: 72px;
-                border-style: solid;
-                border-color: aliceblue;
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .signs-images{
-                width: 44px;
-            }
-        </style>
+
         <h1 style="color: aliceblue; font-family: Arial, Helvetica, sans-serif;">Rock Paper Scissors</h1>
         <div style="display: flex; flex-direction: row; gap: 18px;">
             <div onclick="playGame('Rock')" class="signs">
-                <img class="signs-images" src="fist.png" alt="">
+                <img class="signs-images" src="signs_pngs/fist.png" alt="">
             </div>
             <div onclick="playGame('Paper')" class="signs">
-                <img class="signs-images" src="hello.png" alt="">
+                <img class="signs-images" src="signs_pngs/hello.png" alt="">
             </div>
             <div onclick="playGame('Scissor')" class="signs">
-                <img class="signs-images" src="two.png" alt="">
+                <img class="signs-images" src="signs_pngs/two.png" alt="">
             </div>  
         </div>
         <div style="display: flex;">
@@ -43,50 +26,5 @@
         </div>
 
         <button style="border: none; padding-bottom: 6px ; padding-top: 6px; padding-left: 12px;padding-right: 12px;">Reset Score</button>
-        <script>
-            let Wins = 0;
-            let losses = 0;
-            let ties = 0;
-            function randomSign(){
-                const randomNumber = Math.random();
-                if (randomNumber < 1/3){
-                    return 'Rock';
-                }
-                else if(randomNumber < 2/3){
-                    return 'Paper';
-                }
-                else {
-                    return 'Scissor';
-                }
-            }
-
-            function gameEngine(yourPick, enemyPick){
-                if (yourPick===enemyPick){
-                    ties ++;
-                    return 'Draw';
-                }
-
-                const playerWins = (yourPick==='Rock' && enemyPick==='Scissor')||(yourPick==='Scissor' && enemyPick==='Paper')||(yourPick==='Paper' && enemyPick==='Rock')
-
-                if (playerWins){
-                    Wins++;
-                    return 'You Won!';
-                }
-                else{
-                    losses++;
-                    return 'You Lose';
-                }
-            }
-
-            function playGame(yourPick){
-                const enemyPick = randomSign();
-                const result = gameEngine(yourPick,enemyPick);
-
-                console.log(`You picked: ${yourPick}`);
-                console.log(`Enemy picked: ${enemyPick}`);
-                console.log(`Results: ${result}`)
-
-            }
-        </script>
     </body>
 </html>
